@@ -1,0 +1,450 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Çalışmak İstiyorum | refakatci.org</title>
+
+  <style>
+:root{
+  --accent:#2dd4ff;
+  --accent2:#3b82f6;
+}
+    :root{
+      --text:#eaf0ff;
+      --muted:#9fb0d0;
+      --border:rgba(255,255,255,.08);
+      --shadow:0 18px 50px rgba(0,0,0,.35);
+      --max:900px;
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0}
+    body{
+      font-family: system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,"Helvetica Neue",Arial;
+      color:var(--text);
+      background: linear-gradient(rgba(11,18,32,.88), rgba(11,18,32,.88));
+    }
+    a{color:inherit;text-decoration:none}
+    .wrap{max-width:var(--max); margin:0 auto; padding:22px 16px 60px;}
+    .top{
+      display:flex; align-items:center; justify-content:space-between; gap:12px;
+      padding:12px 14px;
+      border:1px solid var(--border);
+      border-radius:16px;
+      background: rgba(255,255,255,.03);
+      box-shadow: var(--shadow);
+    }
+    .top b{letter-spacing:.2px}
+    .card{
+      margin-top:18px;
+      border:1px solid var(--border);
+      border-radius:18px;
+      background: rgba(255,255,255,.03);
+      box-shadow: var(--shadow);
+      padding:18px;
+    }
+    h1{margin:16px 0 6px; font-size:30px}
+    p{margin:0 0 14px; color:var(--muted)}
+    .form{display:grid; gap:14px}
+    .grid2{display:grid; grid-template-columns: 1fr 1fr; gap:12px}
+    @media (max-width: 800px){ .grid2{grid-template-columns:1fr} }
+    label span{display:block; font-size:13px; color:var(--muted); margin:0 0 6px}
+    input,select,textarea{
+      width:100%; padding:12px 12px;
+      border-radius:14px;
+      border:1px solid var(--border);
+      background: rgba(255,255,255,.04);
+      color: var(--text);
+      outline: none;
+    }
+    .consent{display:flex; gap:10px; align-items:flex-start; color:var(--muted)}
+    .consent input{width:18px;height:18px;margin-top:2px}
+    .btn{
+      display:inline-flex; justify-content:center; align-items:center;
+      padding:12px 16px;
+      border-radius:14px;
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(79,140,255,.85);
+      font-weight:800;
+      cursor:pointer;
+    }
+    .mini{margin:0; font-size:12px; color: rgba(159,176,208,.8)}
+html,body{
+  margin:0;
+  padding:0;
+  font-family: system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,"Helvetica Neue",Arial;
+  color:var(--text);
+  overflow-x:hidden;
+
+  background:
+    linear-gradient(rgba(11,18,32,.82), rgba(11,18,32,.82)),
+    url("bg.png");
+  background-size: cover;
+  background-position: center top;
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+}
+.date-range{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  padding:10px 12px;
+  border-radius:14px;
+  border:1px solid var(--border);
+  background: rgba(255,255,255,.04);
+}
+
+.date-range input[type="date"]{
+  flex:1;
+  padding:8px 10px;
+  border-radius:10px;
+  border:1px solid rgba(255,255,255,.15);
+  background: rgba(0,0,0,.15);
+  color: var(--text);
+}
+
+.date-range .sep{
+  opacity:.6;
+  font-weight:700;
+}
+.file-ui{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  padding:10px 12px;
+  border:1px solid var(--border);
+  border-radius:14px;
+  background: rgba(255,255,255,.04);
+}
+
+.file-input{
+  display:none; /* çirkin input gizli */
+}
+
+.file-btn{
+  padding:10px 14px;
+  border-radius:12px;
+  border:1px solid rgba(255,255,255,.14);
+  background: linear-gradient(135deg, var(--accent), #6aa6ff);
+  color:#fff;
+  font-weight:800;
+  cursor:pointer;
+}
+
+.file-name{
+  color: var(--muted);
+  font-size:14px;
+  overflow:hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+
+/* Açılan seçenek listesi */
+select option{
+  background: #141c2d !important;   /* koyu arka plan */
+  color: #eaf0ff !important;        /* açık yazı */
+}
+
+/* Hover edilen seçenek */
+select option:hover,
+select option:checked{
+  background: #2a3b5f !important;
+  color: #ffffff !important;
+}
+.file-ui{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  padding:10px 12px;
+  border:1px solid var(--border);
+  border-radius:14px;
+  background: rgba(255,255,255,.04);
+}
+
+.file-input{ display:none; }
+
+.file-btn{
+  padding:10px 14px;
+  border-radius:12px;
+  border:1px solid rgba(255,255,255,.14);
+  background: linear-gradient(135deg, var(--accent), #6aa6ff);
+  color:#fff;
+  font-weight:800;
+  cursor:pointer;
+}
+
+.file-btn:disabled{
+  opacity:.5;
+  cursor:not-allowed;
+}
+
+.file-name{
+  color: var(--muted);
+  font-size:14px;
+  overflow:hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.consent{
+  display:flex;
+  gap:10px;
+  align-items:flex-start;
+  color: var(--muted);
+}
+
+.consent input[type="checkbox"]{
+  width:18px;
+  height:18px;
+  margin-top:2px;
+  accent-color: var(--accent);
+}
+/* calismak.html üst bar logo düzeltme */
+.top{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:16px;
+}
+
+.top .brand{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
+.top .logo{
+  display:inline-block;
+  width:34px;
+  height:34px;
+  height:34px;
+  border-radius:12px;
+  background: linear-gradient(135deg, var(--accent), var(--accent2));
+  box-shadow: 0 10px 25px rgba(79,140,255,.25);
+  flex:0 0 auto;
+}
+
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <div class="top">
+  <div class="brand">
+    <span class="logo" aria-hidden="true"></span>
+    <b>refakatci.org</b>
+  </div>
+
+  <a href="index.html">← Ana Sayfa</a>
+</div>
+
+    <h1>Çalışmak İstiyorum</h1>
+    <p>Refakatçi / bakıcı olarak başvur. Bilgilerini alalım, sana dönüş yapalım.</p>
+
+    <div class="card">
+      <form class="form" action="#" method="post" onsubmit="return false;">
+        <div class="grid2">
+          <label><span>Ad Soyad</span><input required name="adsoyad" placeholder="Örn: Dilara Ünsal"></label>
+          <label><span>Telefon</span><input required name="telefon" placeholder="05xx xxx xx xx"></label>
+        </div>
+
+        <div class="grid2">
+          <label><span>Şehir / İlçe</span><input required name="lokasyon" placeholder="Örn: İstanbul / Kadıköy"></label>
+          <label>
+            <span>Çalışma Şekli</span>
+            <select required name="calisma">
+              <option value="" selected disabled>Seçin</option>
+              <option>Saatlik</option>
+              <option>Günlük</option>
+              <option>24 Saat (Yatılı)</option>
+            </select>
+          </label>
+        </div>
+
+        <div class="grid2">
+          <label>
+            <span>Deneyim</span>
+            <select required name="deneyim">
+              <option value="" selected disabled>Seçin</option>
+              <option>0-1 yıl</option>
+              <option>1-3 yıl</option>
+              <option>3-5 yıl</option>
+              <option>5+ yıl</option>
+            </select>
+          </label>
+          <label><span>Sertifika / Eğitim</span><input name="sertifika" placeholder="Varsa (örn: Hasta Bakım Sertifikası)"></label>
+        </div>
+<div class="grid2">
+  <label>
+    <span>Başvuru Türü</span>
+    <select name="tur" required>
+      <option value="" selected disabled>Seçin</option>
+      <option>Refakatçi</option>
+      <option>Yaşlı Bakımı</option>
+      <option>Hasta Bakımı</option>
+      <option>Hemşire / Sağlık Personeli</option>
+      <option>Ev İçi Destek (Temizlik/Yemek)</option>
+    </select>
+  </label>
+
+  <label>
+    <span>Çalışma Saatleri</span>
+    <select name="vardiya" required>
+      <option value="" selected disabled>Seçin</option>
+      <option>Gündüz</option>
+      <option>Gece</option>
+      <option>24 Saat (Yatılı)</option>
+      <option>Haftalık (Yatılı)</option>
+    </select>
+  </label>
+</div>
+
+
+</label>
+
+<div class="grid2">
+  <label>
+  <span>Müsaitlik Tarihi (Başlangıç – Bitiş)</span>
+  <div class="date-range">
+    <input type="date" id="musaitlik_baslangic" name="musaitlik_baslangic" required>
+    <span class="sep">→</span>
+    <input type="date" id="musaitlik_bitis" name="musaitlik_bitis" required>
+  </div>
+</label>
+
+  <label>
+    <span>Ücret Beklentisi</span>
+    <input type="text" name="ucret" placeholder="Örn: Günlük 2000 TL / Aylık 45.000 TL">
+  </label>
+</div>
+
+<label>
+  <span>Belge / CV</span>
+
+  <div class="file-ui">
+    <button type="button" class="file-btn" data-file-btn>Dosya Seç</button>
+    <span class="file-name" data-file-name>Dosya seçilmedi</span>
+    <input type="file" name="cv" class="file-input" data-file-input accept=".pdf,.jpg,.jpeg,.png">
+  </div>
+</label>
+<label>
+  <span>Kimlik (Ön + Arka) – PDF/JPG/PNG</span>
+
+  <div class="file-ui" id="kimlikBox">
+    <button type="button" class="file-btn" id="kimlikBtn">Dosya Seç</button>
+    <span class="file-name" id="kimlikName">2 dosya seçilmedi</span>
+    <input type="file" id="kimlikInput" name="kimlik[]" class="file-input" multiple accept=".pdf,.jpg,.jpeg,.png">
+  </div>
+</label>
+
+<label>
+  <span>Adli Sicil Belgesi (Opsiyonel)</span>
+  <div class="file-ui">
+    <button type="button" class="file-btn" data-file-btn>Dosya Seç</button>
+    <span class="file-name" data-file-name>Dosya seçilmedi</span>
+    <input type="file" name="adli_sicil" class="file-input" data-file-input accept=".pdf,.jpg,.jpeg,.png">
+  </div>
+</label>
+
+<label class="consent">
+  <input type="checkbox" id="onayCheck" required>
+  <span>
+    Kimlik ve adli sicil belgelerimin başvuru değerlendirmesi ve doğrulama amacıyla istenebileceğini,
+    incelenebileceğini ve bu kapsamda işlenmesini kabul ediyorum.
+  </span>
+</label>
+
+<label class="consent">
+  <input type="checkbox" required>
+  <span>Bilgilerimin doğru olduğunu ve iletişime geçilebileceğini kabul ediyorum.</span>
+</label>
+
+<label class="consent">
+  <input type="checkbox" required>
+  <span>Kimlik doğrulama / referans kontrolü gerekli görülürse istenebileceğini kabul ediyorum.</span>
+</label>
+
+        <label><span>Kısa Not</span><textarea name="not" rows="4" placeholder="Yaşlı bakımı, demans, hastane refakati vb."></textarea></label>
+
+        <label class="consent">
+          <input type="checkbox" required>
+          <span>Başvuru bilgilerimin incelenmesi için iletişime geçilmesini kabul ediyorum.</span>
+        </label>
+
+        <button class="btn" type="submit">Başvuruyu Gönder</button>
+        <p class="mini">Şimdilik kayıtlar gönderilmiyor.
+      </form>
+    </div>
+  </div>
+<script>
+  const bas = document.getElementById("musaitlik_baslangic");
+  const bit = document.getElementById("musaitlik_bitis");
+
+  function kontrol(){
+    if (!bas.value) {
+      bit.min = "";
+      return;
+    }
+    bit.min = bas.value;
+    if (bit.value && bit.value < bas.value) bit.value = "";
+  }
+
+  bas.addEventListener("change", kontrol);
+  bit.addEventListener("change", kontrol);
+  kontrol();
+</script>
+<script>
+  document.querySelectorAll(".file-ui").forEach(box => {
+    const btn = box.querySelector("[data-file-btn]");
+    const input = box.querySelector("[data-file-input]");
+    const name = box.querySelector("[data-file-name]");
+
+    btn.addEventListener("click", () => input.click());
+
+    input.addEventListener("change", () => {
+      name.textContent = (input.files && input.files.length)
+        ? input.files[0].name
+        : "Dosya seçilmedi";
+    });
+  });
+</script>
+<script>
+  // Ortak file UI'ler
+  document.querySelectorAll(".file-ui").forEach(box => {
+    const btn = box.querySelector("[data-file-btn]");
+    const input = box.querySelector("[data-file-input]");
+    const name = box.querySelector("[data-file-name]");
+
+    if(btn && input && name){
+      btn.addEventListener("click", () => input.click());
+      input.addEventListener("change", () => {
+        name.textContent = input.files.length ? input.files[0].name : "Dosya seçilmedi";
+      });
+    }
+  });
+
+  // Kimlik (2 dosya) özel
+  const onay = document.getElementById("onayCheck");
+  const kimlikBtn = document.getElementById("kimlikBtn");
+  const kimlikInput = document.getElementById("kimlikInput");
+  const kimlikName = document.getElementById("kimlikName");
+
+  kimlikBtn.addEventListener("click", () => {
+    if(!onay.checked){
+      alert("Lütfen önce onay kutusunu işaretleyin.");
+      return;
+    }
+    kimlikInput.click();
+  });
+
+  kimlikInput.addEventListener("change", () => {
+    if(kimlikInput.files.length === 0){
+      kimlikName.textContent = "2 dosya seçilmedi";
+    } else {
+      kimlikName.textContent = kimlikInput.files.length + " dosya seçildi";
+    }
+  });
+</script>
+</body>
+</html>
